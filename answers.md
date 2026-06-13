@@ -37,3 +37,7 @@ Explanation: The literal `ACCEPT TCP` followed by `.*` is combined to quickly sk
 Command: grep -E -c "^[0-9-]+ 0[0-2]:[0-9]{2}:[0-9]{2} " firewall.log
 Result: 13138
 Explanation: The expression `^[0-9-]+` anchors the match by taking the date at the beginning of the line. Then, `0[0-2]` uses a range in a character class to restrict the time strictly to 00, 01, or 02, followed by the exact format of minutes and seconds.
+
+#Bonus
+Regex: ^[^ ]{1,15}$
+Explanation: The anchors `^` and `$` evaluate the entire string from beginning to end. The negated character class `[^ ]` ensures that there are NO spaces (filtering out phrases), and the quantifier `{1,15}` limits the length to match the requirements of a valid hostname.
