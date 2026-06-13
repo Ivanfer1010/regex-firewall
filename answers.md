@@ -33,3 +33,7 @@ Command: grep -E -c " ACCEPT TCP .* 80 [0-9]+$" firewall.log
 Result: 93
 Explanation: The literal `ACCEPT TCP` followed by `.*` is combined to quickly skip the source IP and port fields. Then, `80` identifies the correct destination port, ensured by `[0-9]+$` which pushes the match to the numeric size at the end of the line.
 
+#Task 7
+Command: grep -E -c "^[0-9-]+ 0[0-2]:[0-9]{2}:[0-9]{2} " firewall.log
+Result: 13138
+Explanation: The expression `^[0-9-]+` anchors the match by taking the date at the beginning of the line. Then, `0[0-2]` uses a range in a character class to restrict the time strictly to 00, 01, or 02, followed by the exact format of minutes and seconds.
